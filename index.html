@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио учителя | [Имя Отчество]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Навигация */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        /* Герой-секция */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #ecf0f1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .hero-buttons .btn:hover {
+            background-color: white;
+            color: #2c3e50;
+        }
+
+        /* Образование */
+        .education {
+            background-color: white;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ecf0f1;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .period {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content .details {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .extra {
+            font-style: italic;
+            color: #3498db;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: #3498db;
+            border: 4px solid white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        /* Опыт работы */
+        .experience {
+            background-color: #f8f9fa;
+        }
+
+        .experience-item {
+            background-color: white;
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .experience-period {
+            font-weight: 600;
+            color: #3498db;
+            background-color: #e8f4fc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .experience-institution {
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+
+        .experience-position {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .experience-list {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .experience-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        /* Достижения */
+        .achievements {
+            background-color: white;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.8rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .achievement-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-year {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Фотогалерея */
+        .gallery {
+            background-color: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(44, 62, 80, 0.8);
+            color: white;
+            padding: 0.8rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Модальное окно для галереи */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5%;
+        }
+
+        .modal-caption {
+            text-align: center;
+            color: #ccc;
+            padding: 1rem;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #3498db;
+        }
+
+        /* Упоминания и публикации */
+        .publications {
+            background-color: white;
+        }
+
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateX(5px);
+        }
+
+        .publication-type {
+            display: inline-block;
+            background-color: #e8f4fc;
+            color: #3498db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-date {
+            color: #7f8c8d;
+            margin-bottom: 0.8rem;
+        }
+
+        .publication-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .publication-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Контакты */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-info h3, .footer-form h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+        }
+
+        .contact-text a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: #3498db;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #3498db;
+            transform: translateY(-5px);
+        }
+
+        .footer-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ecf0f1;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-btn {
+            align-self: flex-start;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-period {
+                margin-bottom: 0.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Портфолио учителя</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#education">Образование</a></li>
+                <li><a href="#experience">Опыт работы</a></li>
+                <li><a href="#achievements">Достижения</a></li>
+                <li><a href="#gallery">Фотогалерея</a></li>
+                <li><a href="#publications">Публикации</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в портфолио [Имя Отчество]</h1>
+            <p>Учитель математики и информатики высшей категории с 15-летним опытом. Стремлюсь раскрывать потенциал каждого ученика.</p>
+            <div class="hero-buttons">
+                <a href="#education" class="btn">Мое образование</a>
+                <a href="#contacts" class="btn">Связаться со мной</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Образование -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Образование и квалификация</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Магистратура</h3>
+                        <div class="period">2010-2012 гг.</div>
+                        <div class="details">[Название ВУЗа], Факультет математики и информатики</div>
+                        <div class="extra">Диплом с отличием, тема диссертации: "Современные методы преподавания математики в школе"</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Бакалавриат</h3>
+                        <div class="period">2006-2010 гг.</div>
+                        <div class="details">[Название ВУЗа], Факультет математики</div>
+                        <div class="extra">Квалификация: учитель математики и информатики</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Курсы повышения квалификации</h3>
+                        <div class="period">2018 г.</div>
+                        <div class="details">"Современные образовательные технологии в преподавании информатики"</div>
+                        <div class="extra">Объем: 72 часа, сертификат с отличием</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Профессиональная переподготовка</h3>
+                        <div class="period">2015 г.</div>
+                        <div class="details">"Цифровые технологии в образовании"</div>
+                        <div class="extra">Диплом о профессиональной переподготовке</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Опыт работы -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Опыт работы</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-period">2015 г. - настоящее время</div>
+                    <div class="experience-institution">[Название учебного заведения]</div>
+                </div>
+                <div class="experience-position">Учитель математики и информатики высшей категории</div>
+                <ul class="experience-list">
+                    <li>Разработка и внедрение современных методик преподавания</li>
+                    <li>Подготовка учащихся к олимпиадам и конкурсам</li>
+                    <li>Кураторство проектной деятельности учащихся</li>
+                    <li>Организация и проведение открытых уроков для коллег</li>
+                    <li>Методическая работа: разработка учебных материалов</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-period">2010 г. - 2015 г.</div>
+                    <div class="experience-institution">[Название учебного заведения]</div>
+                </div>
+                <div class="experience-position">Учитель математики</div>
+                <ul class="experience-list">
+                    <li>Преподавание математики в 5-11 классах</li>
+                    <li>Классное руководство</li>
+                    <li>Подготовка учащихся к ГИА и ЕГЭ</li>
+                    <li>Организация внеклассных мероприятий по предмету</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Достижения -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2>Мои достижения</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Победитель конкурса «Учитель года-2023»</h3>
+                    <p>Региональный этап всероссийского конкурса педагогического мастерства</p>
+                    <div class="achievement-year">2023</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📈</div>
+                    <h3>Лучшие результаты ЕГЭ по математике</h3>
+                    <p>Среди моих учеников 5 человек получили 100 баллов на ЕГЭ по математике</p>
+                    <div class="achievement-year">2022</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">👨‍🏫</div>
+                    <h3>Автор методического пособия</h3>
+                    <p>Разработал учебное пособие по решению олимпиадных задач по информатике</p>
+                    <div class="achievement-year">2021</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🤖</div>
+                    <h3>Призер конкурса IT-проектов</h3>
+                    <p>Ученики под моим руководством заняли 2 место в региональном конкурсе IT-проектов</p>
+                    <div class="achievement-year">2020</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Наставник победителей олимпиад</h3>
+                    <p>Мои ученики стали призерами Всероссийской олимпиады школьников по математике</p>
+                    <div class="achievement-year">2019</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💡</div>
+                    <h3>Эксперт образовательных программ</h3>
+                    <p>Участие в разработке региональной программы по цифровизации образования</p>
+                    <div class="achievement-year">2018</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Фотогалерея -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Фотографии из школьной жизни</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" onclick="openModal('img1')">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Урок математики">
+                    <div class="gallery-caption">Урок математики в 10 классе</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('img2')">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Работа с учениками">
+                    <div class="gallery-caption">Работа с учениками над проектом</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('img3')">
+                    <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w-600&q=80" alt="Школьная олимпиада">
+                    <div class="gallery-caption">Подготовка к школьной олимпиаде</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('img4')">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Открытый урок">
+                    <div class="gallery-caption">Открытый урок для коллег</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('img5')">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Внеклассное мероприятие">
+                    <div class="gallery-caption">Внеклассное мероприятие по информатике</div>
+                </div>
+                <div class="gallery-item" onclick="openModal('img6')">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Награждение учеников">
+                    <div class="gallery-caption">Награждение учеников-призеров олимпиад</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для галереи -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+
+    <!-- Упоминания и публикации -->
+    <section id="publications" class="publications">
+        <div class="container">
+            <h2>Упоминания в СМИ и публикации</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-type">Статья в журнале</div>
+                    <h3 class="publication-title">"Современные подходы к преподаванию математики в цифровую эпоху"</h3>
+                    <div class="publication-date">Октябрь 2022 г.</div>
+                    <a href="#" class="publication-link">Читать статью →</a>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-type">Интервью на телеканале</div>
+                    <h3 class="publication-title">"Цифровизация образования: возможности и риски"</h3>
+                    <div class="publication-date">Май 2021 г.</div>
+                    <a href="#" class="publication-link">Смотреть интервью →</a>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-type">Методическое пособие</div>
+                    <h3 class="publication-title">"Сборник олимпиадных задач по информатике для 9-11 классов"</h3>
+                    <div class="publication-date">Март 2020 г.</div>
+                    <a href="#" class="publication-link">Скачать пособие →</a>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-type">Участие в конференции</div>
+                    <h3 class="publication-title">"Инновационные методы преподавания STEM-дисциплин"</h3>
+                    <div class="publication-date">Ноябрь 2019 г.</div>
+                    <a href="#" class="publication-link">Материалы конференции →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Контактная информация</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <a href="mailto:teacher@example.com">teacher@example.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        [Город], [Адрес учебного заведения]
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-form">
+                <h3>Отправить сообщение</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="[Введите ваше имя]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ваш email</label>
+                        <input type="email" id="email" name="email" placeholder="[Введите ваш email]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" placeholder="[Введите ваше сообщение]" required></textarea>
+                    </div>
+                    <button type="submit" class="btn form-btn">Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Портфолио учителя [Имя Отчество]. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Галерея с модальным окном
+        function openModal(imgId) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modal-img');
+            const captionText = document.getElementById('modal-caption');
+            const imgSrc = document.querySelector(`.gallery-item[onclick="openModal('${imgId}')"] img`).src;
+            const caption = document.querySelector(`.gallery-item[onclick="openModal('${imgId}')"] .gallery-caption`).textContent;
+            
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            captionText.innerHTML = caption;
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+        
+        // Закрытие модального окна при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Обработка формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // В реальном приложении здесь был бы AJAX-запрос к серверу
+            // Для демо просто показываем сообщение
+            alert(`Спасибо, ${name}! Ваше сообщение отправлено. Я свяжусь с вами по адресу ${email} в ближайшее время.`);
+            
+            // Очищаем форму
+            document.getElementById('contactForm').reset();
+        });
+        
+        // Фиксированная навигация при прокрутке
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                nav.style.padding = '0';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                nav.style.padding = '';
+            }
+        });
+    </script>
+</body>
+</html>
