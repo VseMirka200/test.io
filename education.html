@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Образование — Портфолио</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="brand">Портфолио</div>
+        <button class="burger" data-burger aria-label="Меню" aria-expanded="false">☰ <span style="font-size:13px;color:var(--muted)">Меню</span></button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html">Главная страница</a>
+          <a class="active" href="education.html">Образование</a>
+          <a href="work-experience.html">Опыт работы</a>
+
+          <div class="dropdown" data-dropdown>
+            <button data-dropdown-btn aria-expanded="false">Достижения ▾</button>
+            <div class="dropdown-panel">
+              <a href="achievements-teacher.html">Преподавателя</a>
+              <a href="achievements-students.html">Студентов</a>
+            </div>
+          </div>
+
+          <a href="photos.html">Фотографии</a>
+          <a href="mentions.html">Упоминания</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Образование</h1>
+    <p class="subtitle">Дипломы, курсы повышения квалификации и подтверждающие материалы</p>
+
+    <section class="section">
+      <h2>Основное образование</h2>
+      <div class="rows">
+        <div class="row">
+          <p class="row-title">Диплом о профессиональном образовании</p>
+          <p class="row-sub">Учебное заведение, специальность, год выпуска — заполните под себя.</p>
+          <div class="btn-row">
+            <a class="btn" href="#" target="_blank" rel="noopener">Посмотреть документ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Повышение квалификации</h2>
+      <div class="rows">
+        <div class="row">
+          <p class="row-title">Курс: современная методика преподавания</p>
+          <p class="row-sub">Провайдер/организация, количество часов, дата прохождения.</p>
+          <div class="btn-row">
+            <a class="btn" href="#" target="_blank" rel="noopener">Открыть сертификат</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <p class="row-title">Курс: охрана труда и безопасность</p>
+          <p class="row-sub">Провайдер, объём, дата. Добавьте ссылку на файл/папку.</p>
+          <div class="btn-row">
+            <a class="btn" href="#" target="_blank" rel="noopener">Открыть удостоверение</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="meta">Подсказка: вместо # вставьте ссылку на Google Drive / Яндекс.Диск / файл на сайте.</p>
+      <p class="meta">Актуально на: 03.02.2026</p>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Портфолио.
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

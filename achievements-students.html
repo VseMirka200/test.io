@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Достижения студентов — Портфолио</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="brand">Портфолио</div>
+        <button class="burger" data-burger aria-label="Меню" aria-expanded="false">☰ <span style="font-size:13px;color:var(--muted)">Меню</span></button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html">Главная страница</a>
+          <a href="education.html">Образование</a>
+          <a href="work-experience.html">Опыт работы</a>
+
+          <div class="dropdown open" data-dropdown>
+            <button data-dropdown-btn aria-expanded="true">Достижения ▾</button>
+            <div class="dropdown-panel">
+              <a href="achievements-teacher.html">Преподавателя</a>
+              <a class="active" href="achievements-students.html">Студентов</a>
+            </div>
+          </div>
+
+          <a href="photos.html">Фотографии</a>
+          <a href="mentions.html">Упоминания</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Достижения студентов</h1>
+    <p class="subtitle">Результаты участия в конкурсах, олимпиадах и практических мероприятиях</p>
+
+    <section class="section">
+      <h2>Подборка подтверждений</h2>
+
+      <div class="gallery">
+        <div class="tile">
+          <img src="assets/img/student-1.jpg" alt="Достижение студента 1" />
+          <div class="cap">Диплом/грамота — событие, место, год</div>
+        </div>
+
+        <div class="tile">
+          <img src="assets/img/student-2.jpg" alt="Достижение студента 2" />
+          <div class="cap">Сертификат — направление, роль, результат</div>
+        </div>
+
+        <div class="tile">
+          <img src="assets/img/student-1.jpg" alt="Достижение студента 3" />
+          <div class="cap">Дополнение — замените на ваши материалы</div>
+        </div>
+      </div>
+
+      <p class="meta" style="margin-top:12px">Актуально на: 03.02.2026</p>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Портфолио.
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

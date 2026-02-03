@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Достижения преподавателя — Портфолио</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="brand">Портфолио</div>
+        <button class="burger" data-burger aria-label="Меню" aria-expanded="false">☰ <span style="font-size:13px;color:var(--muted)">Меню</span></button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html">Главная страница</a>
+          <a href="education.html">Образование</a>
+          <a href="work-experience.html">Опыт работы</a>
+
+          <div class="dropdown open" data-dropdown>
+            <button data-dropdown-btn aria-expanded="true">Достижения ▾</button>
+            <div class="dropdown-panel">
+              <a class="active" href="achievements-teacher.html">Преподавателя</a>
+              <a href="achievements-students.html">Студентов</a>
+            </div>
+          </div>
+
+          <a href="photos.html">Фотографии</a>
+          <a href="mentions.html">Упоминания</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Достижения преподавателя</h1>
+    <p class="subtitle">Сертификаты, благодарности, награды и подтверждения результатов</p>
+
+    <section class="section">
+      <h2>Документы и награды</h2>
+
+      <div class="gallery">
+        <div class="tile">
+          <img src="assets/img/cert-1.jpg" alt="Сертификат 1" />
+          <div class="cap">Сертификат/грамота — краткое описание (год, мероприятие)</div>
+        </div>
+
+        <div class="tile">
+          <img src="assets/img/cert-2.jpg" alt="Сертификат 2" />
+          <div class="cap">Благодарность/диплом — подпись и контекст</div>
+        </div>
+
+        <div class="tile">
+          <img src="assets/img/cert-1.jpg" alt="Сертификат 3" />
+          <div class="cap">Ещё один документ — замените картинку на вашу</div>
+        </div>
+      </div>
+
+      <p class="meta" style="margin-top:12px">
+        Совет: если документов много, делайте несколько секций (например “2026”, “2025”, “Архив”).
+      </p>
+      <p class="meta">Актуально на: 03.02.2026</p>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Портфолио.
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
