@@ -1,4 +1,19 @@
-﻿<!doctype html>
+﻿<?php
+$dir = __DIR__ . '/assets/img/achievements/teacher';
+$images = [];
+$patterns = ['*.jpg','*.jpeg','*.png','*.webp','*.gif'];
+foreach ($patterns as $pattern) {
+  $images = array_merge($images, glob($dir . '/' . $pattern));
+}
+sort($images, SORT_NATURAL | SORT_FLAG_CASE);
+function make_caption($path) {
+  $name = pathinfo($path, PATHINFO_FILENAME);
+  $name = str_replace(['-','_'], ' ', $name);
+  $name = preg_replace('/\s+/', ' ', $name);
+  return trim($name);
+}
+?>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -14,7 +29,7 @@
         <button class="burger" data-burger aria-label="Меню" aria-expanded="false">☰ <span style="font-size:13px;color:var(--muted)">Меню</span></button>
 
         <nav class="nav" data-nav>
-          <a href="index.html">Главная страница</a>
+          <a href="index.html">Главная</a>
           <a href="education.html">Образование</a>
           <a href="work-experience.html">Опыт работы</a>
 
@@ -40,27 +55,25 @@
     <section class="section">
       <h2>Документы и награды</h2>
 
-      <div class="gallery">
-        <div class="tile">
-          <img src="assets/img/cert-1.jpg" alt="Сертификат 1" />
-          <div class="cap">Сертификат/грамота — краткое описание (год, мероприятие)</div>
+      <?php if (count($images) === 0): ?>
+        <p class="meta">Пока нет изображений. Добавьте файлы в папку <b>assets/img/achievements/teacher</b>.</p>
+      <?php else: ?>
+        <div class="gallery">
+          <?php foreach ($images as $path):
+            $file = basename($path);
+            $url = 'assets/img/achievements/teacher/' . $file;
+            $caption = make_caption($file);
+          ?>
+            <div class="tile">
+              <img src="<?= htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>" alt="Документ" />
+              <div class="cap"><?= htmlspecialchars($caption, ENT_QUOTES, 'UTF-8') ?></div>
+            </div>
+          <?php endforeach; ?>
         </div>
+      <?php endif; ?>
 
-        <div class="tile">
-          <img src="assets/img/cert-2.jpg" alt="Сертификат 2" />
-          <div class="cap">Благодарность/диплом — подпись и контекст</div>
-        </div>
-
-        <div class="tile">
-          <img src="assets/img/cert-1.jpg" alt="Сертификат 3" />
-          <div class="cap">Ещё один документ — замените картинку на вашу</div>
-        </div>
-      </div>
-
-      <p class="meta" style="margin-top:12px">
-        Совет: если документов много, делайте несколько секций (например “2026”, “2025”, “Архив”).
-      </p>
-      <p class="meta">Актуально на: 03.02.2026</p>
+      <p class="meta" style="margin-top:12px">Совет: используйте понятные имена файлов (например, <b>2025-olimpiada</b> или <b>gramota-2024</b>).</p>
+      <p class="meta">Актуально на: 06.02.2026</p>
     </section>
 
     <div class="footer">
@@ -74,4 +87,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-

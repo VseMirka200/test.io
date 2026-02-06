@@ -26,4 +26,35 @@
       if (!inside) dropdown.classList.remove('open');
     });
   }
+
+  // reveal animations
+  const revealTargets = document.querySelectorAll(
+    '.page-title, .subtitle, .section, .row, .tile, .hero, .portrait, .badge, .btn'
+  );
+
+  revealTargets.forEach((el, idx) => {
+    el.classList.add('reveal');
+    const delay = Math.min(idx * 60, 300);
+    el.style.transitionDelay = `${delay}ms`;
+  });
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    revealTargets.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
 })();
